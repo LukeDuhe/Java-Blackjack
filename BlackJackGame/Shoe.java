@@ -8,12 +8,13 @@ public class Shoe {
         "ace", "king", "queen", "jack", "ten", "nine", "eight", 
         "seven", "six", "five", "four", "three", "two", "one"};
     private HashMap<String,Integer> deck;
+    private int cardCount = 0;
 
-    public Shoe(){
+    public Shoe() {
         shuffle();
     }
 
-    public void shuffle(){
+    public void shuffle() {
         deck = new HashMap<String,Integer>();
         deck.put("ace",4);
         deck.put("king",4);
@@ -29,9 +30,15 @@ public class Shoe {
         deck.put("three",4);
         deck.put("two",4);
         deck.put("one",4);
+
+        cardCount = 52;
     }
 
-    public String draw(){
+    public int getCardCount() {
+        return cardCount;
+    }
+
+    public String draw() {
         ArrayList<String> filteredDeck = getFilteredDeck();
 
         Random random = new Random();
@@ -41,10 +48,12 @@ public class Shoe {
 
         deck.put(selectedCard, deck.get(selectedCard) - 1);
 
+        cardCount--;
+
         return selectedCard;
     }
 
-    private ArrayList<String> getFilteredDeck(){
+    private ArrayList<String> getFilteredDeck() {
         ArrayList<String> filteredDeck = new ArrayList<String>();
 
         for (String card : cardTypes) {
