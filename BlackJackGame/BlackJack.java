@@ -1,6 +1,7 @@
 package BlackJackGame;
 import java.util.Scanner; 
 import java.util.Arrays;
+import java.util.List;
 
 public class BlackJack {
     static Shoe shoe;
@@ -72,7 +73,9 @@ public class BlackJack {
     public static void handleHitOrStayLoop() {
         printGameState(true);
         while (player.total < 22) {
-            String move = askForPlayerMove();
+            String question = "Would you like to [h]it or [s]tay?";
+            List<String> validEntries = Arrays.asList("hit","h","stay","s");
+            String move = askUntilValidInput(question, validEntries);
             if (move.equals("h") || move.equals("hit")) {
                 player.addToHand(shoe.draw());
                 System.out.println("\n\"HIT ME!\"");
@@ -83,19 +86,6 @@ public class BlackJack {
             }
             printGameState(true);
         }
-    }
-
-    public static String askForPlayerMove() {
-        boolean validInput = false;
-        String move = "";
-        while (!validInput) {
-            System.out.println("Would you like to [h]it or [s]tay?");
-            move = scanner.nextLine();
-            if (Arrays.asList("hit","h","stay","s").contains(move)) {
-                validInput = true;
-            }
-        }
-        return move;
     }
 
     public static void handleFinalHandsScoring() {
@@ -131,15 +121,9 @@ public class BlackJack {
     }
 
     public static boolean playAgain() {
-        boolean validInput = false;
-        String decision = "";
-        while (!validInput) {
-            System.out.println("Play again?  Y or N");
-            decision = scanner.nextLine();
-            if (Arrays.asList("Y","y","N","n").contains(decision)) {
-                validInput = true;
-            }
-        }
+        String question = "Play again?  Y or N";
+        List<String> validEntries = Arrays.asList("Y","y","N","n");
+        String decision = askUntilValidInput(question, validEntries);
         
         if (decision.equals("N") || decision.equals("n")) {
             printSquiggleMessage("Thanks for playing!");
@@ -148,6 +132,19 @@ public class BlackJack {
         else {
             return true;
         }
+    }
+
+    public static String askUntilValidInput(String question, List<String> validEntries) {
+        boolean validInput = false;
+        String decision = "";
+        while (!validInput) {
+            System.out.println(question);
+            decision = scanner.nextLine();
+            if (validEntries.contains(decision)) {
+                validInput = true;
+            }
+        }
+        return decision;
     }
 
     public static void printGameState(boolean hideDealerHand) {
