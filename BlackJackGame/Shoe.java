@@ -58,7 +58,7 @@ public class Shoe {
         ArrayList<String> filteredDeck = new ArrayList<String>();
 
         for (String card : cardTypes) {
-            if(deck.get(card) > 0){
+            if (deck.get(card) > 0) {
                 filteredDeck.add(card);
             }
         }
