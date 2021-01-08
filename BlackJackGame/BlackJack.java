@@ -103,10 +103,10 @@ public class BlackJack {
                 printSquiggleMessage("THE DEALER BUSTED!\nYOU WIN!");
             }
             else if (dealer.getTotal() > player.getTotal()) {
-                printSquiggleMessage("YOU LOSE!");
+                printSquiggleMessage("THE DEALER'S HAND IS HIGHER...\nYOU LOSE!");
             }
             else if (dealer.getTotal() < player.getTotal()) {
-                printSquiggleMessage("YOU WIN!");
+                printSquiggleMessage("YOUR HAND IS HIGHER!\nYOU WIN!");
             }
             else {
                 printSquiggleMessage("IT'S A DRAW!");
