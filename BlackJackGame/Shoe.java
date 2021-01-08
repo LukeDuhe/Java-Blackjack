@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Shoe {
-    private String[] cardTypes = {
+    static private String[] cardTypes = {
         "ace", "king", "queen", "jack", "ten", "nine", "eight", 
         "seven", "six", "five", "four", "three", "two", "one"};
     private HashMap<String,Integer> deck;
-    private int cardCount = 0;
+    private int cardCount;
 
     public Shoe() {
-        shuffle();
-    }
-
-    public void shuffle() {
         deck = new HashMap<String,Integer>();
         deck.put("ace",4);
         deck.put("king",4);
@@ -31,6 +27,11 @@ public class Shoe {
         deck.put("two",4);
         deck.put("one",4);
 
+        cardCount = 52;
+    }
+
+    public void shuffle() {
+        deck.replaceAll((card,count) -> 4);
         cardCount = 52;
     }
 
