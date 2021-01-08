@@ -22,12 +22,20 @@ public class Player {
         Map.entry("one",1)
     );
 
-    public int total;
-    public ArrayList<String> hand;
+    private int total;
+    private ArrayList<String> hand;
 
     public Player() {
         total = 0;
         hand = new ArrayList<String>();
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public ArrayList<String> getHand() {
+        return hand;
     }
 
     public void addToHand(String card) {

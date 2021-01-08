@@ -20,7 +20,7 @@ public class BlackJack {
         while (true) {
             setupRound();
 
-            if (player.total == 21) {
+            if (player.getTotal() == 21) {
                 handleBlackjack();
             } 
             else {
@@ -60,7 +60,7 @@ public class BlackJack {
 
     public static void handleBlackjack() {
         printGameState(false);
-        if (dealer.total == 21) {
+        if (dealer.getTotal() == 21) {
             printSquiggleMessage("YOU GOT BLACKJACK!\n"
                                 +"BUT SO DID THE DEALER...\n"
                                 +"IT'S A DRAW.");
@@ -72,7 +72,7 @@ public class BlackJack {
 
     public static void handleHitOrStayLoop() {
         printGameState(true);
-        while (player.total < 22) {
+        while (player.getTotal() < 22) {
             String question = "Would you like to [h]it or [s]tay?";
             List<String> validEntries = Arrays.asList("hit","h","stay","s");
             String move = askUntilValidInput(question, validEntries);
@@ -89,7 +89,7 @@ public class BlackJack {
     }
 
     public static void handleFinalHandsScoring() {
-        if (player.total > 21) {
+        if (player.getTotal() > 21) {
             printGameState(false);
             printSquiggleMessage("YOU BUSTED!\nYOU LOSE!");
         } 
@@ -99,13 +99,13 @@ public class BlackJack {
             System.out.println("\nRevealing final hands...");
             printGameState(false);
 
-            if (dealer.total > 21) {
+            if (dealer.getTotal() > 21) {
                 printSquiggleMessage("THE DEALER BUSTED!\nYOU WIN!");
             }
-            else if (dealer.total > player.total) {
+            else if (dealer.getTotal() > player.getTotal()) {
                 printSquiggleMessage("YOU LOSE!");
             }
-            else if (dealer.total < player.total) {
+            else if (dealer.getTotal() < player.getTotal()) {
                 printSquiggleMessage("YOU WIN!");
             }
             else {
@@ -115,7 +115,7 @@ public class BlackJack {
     }
 
     public static void hitDealerToSeventeen() {
-        while (dealer.total <= 16) {
+        while (dealer.getTotal() <= 16) {
             dealer.addToHand(shoe.draw());
         }
     }
@@ -151,10 +151,10 @@ public class BlackJack {
         System.out.println("\n----------------------------------\n");
         System.out.println("Dealer's Hand:");
         if (hideDealerHand) {
-            System.out.printf("['%s','----']\n\n",dealer.hand.get(0));
+            System.out.printf("['%s','----']\n\n",dealer.getHand().get(0));
         }
         else {
-            System.out.println(dealer.hand + "\n");
+            System.out.println(dealer.getHand() + "\n");
         }
 
         System.out.println("Dealer's Total:");
@@ -162,14 +162,14 @@ public class BlackJack {
             System.out.println("???\n");
         }
         else {
-            System.out.println(dealer.total + "\n");
+            System.out.println(dealer.getTotal() + "\n");
         }
 
         System.out.println("Your Hand:");
-        System.out.println(player.hand + "\n");
+        System.out.println(player.getHand() + "\n");
 
         System.out.println("Your Total:");
-        System.out.println(player.total);
+        System.out.println(player.getTotal());
         System.out.println("\n----------------------------------\n");
     }
 
