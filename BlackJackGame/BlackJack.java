@@ -122,13 +122,13 @@ public class BlackJack {
 
     public static boolean playAgain() {
         String question = "Play again?  Y or N";
-        List<String> validEntries = Arrays.asList("Y","y","N","n");
+        List<String> validEntries = Arrays.asList("y","yes","n","no");
         String decision = askUntilValidInput(question, validEntries);
         
-        if (decision.equals("N") || decision.equals("n")) {
+        if (decision.equals("n") || decision.equals("no")) {
             printSquiggleMessage("Thanks for playing!");
             return false;
-        } 
+        }
         else {
             return true;
         }
@@ -139,7 +139,7 @@ public class BlackJack {
         String decision = "";
         while (!validInput) {
             System.out.println(question);
-            decision = scanner.nextLine();
+            decision = scanner.nextLine().toLowerCase();
             if (validEntries.contains(decision)) {
                 validInput = true;
             }
