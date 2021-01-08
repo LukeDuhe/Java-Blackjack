@@ -6,11 +6,11 @@
 ---
 This program was developed using JDK version 15.0.1, so that version should be used to avoid any issues. 
 
-1. In the terminal navigate to the "BlackJackGame/" directory.
+1. Navigate to the `BlackJackGame/` directory.
 1. Use javac to compile.
-    - "javac BlackJackGame/BlackJack.java"
+    - `javac BlackJackGame/BlackJack.java`
 1. Run the program. 
-    - "java BlackJackGame/BlackJack"   
+    - `java BlackJackGame/BlackJack` 
 1. Enjoy and good luck! 
 
 
@@ -18,7 +18,7 @@ This program was developed using JDK version 15.0.1, so that version should be u
 ---
 This game follows the general rules of single-deck Blackjack with one player and one dealer.
 
-At the start of each round the Dealer and the Player are both dealt two cards. Only one of the dealer's cards is dealt faceup, allowing the Player to assess their odds of beating the Dealer's hand.
+At the start of each round the Dealer and the Player are both dealt two cards. Only one of the dealer's cards is dealt face-up, allowing the Player to assess their odds of beating the Dealer's hand.
 
 If the player is dealt 21 right away, they get Blackjack! But the round can still end in a draw if the dealer was also dealt a Blackjack. 
 
