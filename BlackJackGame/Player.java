@@ -50,8 +50,11 @@ public class Player {
             }
         }
 
-        if (total > 21) {
-            total -= acesCount*10;
+        for (int i=0; i<acesCount; i++) {
+            if (total < 22) {
+                break;
+            }
+            total -= 10;
         }
     }
 
